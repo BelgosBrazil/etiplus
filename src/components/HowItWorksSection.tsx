@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Calendar, Package, Truck, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import CalendlyQuestionnaire from "@/components/CalendlyQuestionnaire";
 
 const steps = [
   {
@@ -29,8 +31,11 @@ const steps = [
 ];
 
 const HowItWorksSection = () => {
+  const [isQuestionnaireOpen, setIsQuestionnaireOpen] = useState(false);
+
   return (
-    <section className="relative py-20 px-6 overflow-hidden">
+    <>
+      <section className="relative py-20 px-6 overflow-hidden">
       {/* Background Image Overlay */}
       <div 
         className="absolute inset-0 opacity-30 bg-cover bg-center bg-no-repeat z-0"
@@ -81,14 +86,22 @@ const HowItWorksSection = () => {
         </div>
         
         <div className="text-center">
-          <Button size="lg" className="rounded-full px-8" asChild>
-            <a href="https://wa.me/551123918669?text=Olá! Gostaria de agendar uma reunião para conhecer as pulseiras hospitalares da Etiplus." target="_blank" rel="noopener noreferrer">
-              Agende sua reunião agora
-            </a>
+          <Button 
+            size="lg" 
+            className="rounded-full px-8" 
+            onClick={() => setIsQuestionnaireOpen(true)}
+          >
+            Agende sua reunião agora
           </Button>
         </div>
       </div>
     </section>
+    
+    <CalendlyQuestionnaire 
+      open={isQuestionnaireOpen} 
+      onOpenChange={setIsQuestionnaireOpen} 
+    />
+    </>
   );
 };
 

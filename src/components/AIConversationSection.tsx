@@ -1,9 +1,14 @@
+import { useState } from "react";
 import { Shield, DollarSign, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import CalendlyQuestionnaire from "@/components/CalendlyQuestionnaire";
 
 const AIConversationSection = () => {
+  const [isQuestionnaireOpen, setIsQuestionnaireOpen] = useState(false);
+
   return (
-    <section className="py-20 px-6 bg-section-accent">
+    <>
+      <section className="py-20 px-6 bg-section-accent">
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center justify-center mb-4">
           <div className="bg-icon-bg-purple rounded-full p-3">
@@ -57,14 +62,22 @@ const AIConversationSection = () => {
         </div>
         
         <div className="text-center">
-          <Button size="lg" className="rounded-full px-8" asChild>
-            <a href="https://wa.me/551123918669?text=Olá! Gostaria de agendar uma reunião para conhecer os preços das pulseiras hospitalares da Etiplus." target="_blank" rel="noopener noreferrer">
-              Agende uma reunião e conheça nossos preços
-            </a>
+          <Button 
+            size="lg" 
+            className="rounded-full px-8" 
+            onClick={() => setIsQuestionnaireOpen(true)}
+          >
+            Agende uma reunião e conheça nossos preços
           </Button>
         </div>
       </div>
     </section>
+    
+    <CalendlyQuestionnaire 
+      open={isQuestionnaireOpen} 
+      onOpenChange={setIsQuestionnaireOpen} 
+    />
+    </>
   );
 };
 
