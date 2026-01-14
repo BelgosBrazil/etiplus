@@ -4,6 +4,7 @@ import ProblemSection from "@/components/ProblemSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import AIConversationSection from "@/components/AIConversationSection";
 import SolutionsSection from "@/components/SolutionsSection";
+import BraceletsGallery from "@/components/BraceletsGallery";
 import WhyMigrateSection from "@/components/WhyMigrateSection";
 import FinalCTASection from "@/components/FinalCTASection";
 
@@ -17,6 +18,7 @@ const Index = () => {
         <HowItWorksSection />
         <AIConversationSection />
         <SolutionsSection />
+        <BraceletsGallery />
         <WhyMigrateSection />
         <FinalCTASection />
       </main>
