@@ -1,16 +1,12 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar, Phone } from "lucide-react";
-import CalendlyQuestionnaire from "@/components/CalendlyQuestionnaire";
 
 const FinalCTASection = () => {
-  const [isQuestionnaireOpen, setIsQuestionnaireOpen] = useState(false);
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de agendar uma reunião para conhecer as pulseiras hospitalares da Etiplus e solicitar uma cotação.");
   const whatsappLink = `https://wa.me/551123918669?text=${whatsappMessage}`;
 
   return (
-    <>
-      <section className="py-20 px-6 bg-section-accent">
+    <section className="py-20 px-6 bg-section-accent">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6">
@@ -49,18 +45,9 @@ const FinalCTASection = () => {
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex justify-center items-center">
               <Button 
                 size="lg" 
-                className="text-lg px-10 py-7 h-auto rounded-full w-full sm:w-auto" 
-                onClick={() => setIsQuestionnaireOpen(true)}
-              >
-                <Calendar className="mr-2 h-5 w-5" />
-                Agendar via Calendly
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
                 className="text-lg px-10 py-7 h-auto rounded-full w-full sm:w-auto" 
                 asChild
               >
@@ -73,12 +60,6 @@ const FinalCTASection = () => {
           </div>
         </div>
       </section>
-      
-      <CalendlyQuestionnaire 
-        open={isQuestionnaireOpen} 
-        onOpenChange={setIsQuestionnaireOpen} 
-      />
-    </>
   );
 };
 

@@ -1,14 +1,12 @@
-import { useState } from "react";
-import { Shield, DollarSign, Award } from "lucide-react";
+import { Shield, DollarSign, Award, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import CalendlyQuestionnaire from "@/components/CalendlyQuestionnaire";
 
 const AIConversationSection = () => {
-  const [isQuestionnaireOpen, setIsQuestionnaireOpen] = useState(false);
+  const whatsappMessage = encodeURIComponent("Olá! Gostaria de agendar uma reunião para conhecer as pulseiras hospitalares da Etiplus e solicitar uma cotação.");
+  const whatsappLink = `https://wa.me/551123918669?text=${whatsappMessage}`;
 
   return (
-    <>
-      <section className="py-20 px-6 bg-section-accent">
+    <section className="py-20 px-6 bg-section-accent">
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center justify-center mb-4">
           <div className="bg-icon-bg-purple rounded-full p-3">
@@ -65,19 +63,16 @@ const AIConversationSection = () => {
           <Button 
             size="lg" 
             className="rounded-full px-8" 
-            onClick={() => setIsQuestionnaireOpen(true)}
+            asChild
           >
-            Agende uma reunião e conheça nossos preços
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              <Phone className="mr-2 h-5 w-5" />
+              Falar no WhatsApp
+            </a>
           </Button>
         </div>
       </div>
     </section>
-    
-    <CalendlyQuestionnaire 
-      open={isQuestionnaireOpen} 
-      onOpenChange={setIsQuestionnaireOpen} 
-    />
-    </>
   );
 };
 
