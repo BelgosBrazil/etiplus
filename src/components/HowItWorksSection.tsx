@@ -1,7 +1,5 @@
-import { useState } from "react";
-import { Calendar, Package, Truck, CheckCircle2 } from "lucide-react";
+import { Calendar, Package, Truck, CheckCircle2, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import CalendlyQuestionnaire from "@/components/CalendlyQuestionnaire";
 
 const steps = [
   {
@@ -31,11 +29,11 @@ const steps = [
 ];
 
 const HowItWorksSection = () => {
-  const [isQuestionnaireOpen, setIsQuestionnaireOpen] = useState(false);
+  const whatsappMessage = encodeURIComponent("Olá! Gostaria de agendar uma reunião para conhecer as pulseiras hospitalares da Etiplus e solicitar uma cotação.");
+  const whatsappLink = `https://wa.me/551123918669?text=${whatsappMessage}`;
 
   return (
-    <>
-      <section className="relative py-20 px-6 overflow-hidden">
+    <section className="relative py-20 px-6 overflow-hidden">
       {/* Background Image Overlay */}
       <div 
         className="absolute inset-0 opacity-30 bg-cover bg-center bg-no-repeat z-0"
@@ -89,19 +87,16 @@ const HowItWorksSection = () => {
           <Button 
             size="lg" 
             className="rounded-full px-8" 
-            onClick={() => setIsQuestionnaireOpen(true)}
+            asChild
           >
-            Agende sua reunião agora
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              <Phone className="mr-2 h-5 w-5" />
+              Falar no WhatsApp
+            </a>
           </Button>
         </div>
       </div>
     </section>
-    
-    <CalendlyQuestionnaire 
-      open={isQuestionnaireOpen} 
-      onOpenChange={setIsQuestionnaireOpen} 
-    />
-    </>
   );
 };
 
